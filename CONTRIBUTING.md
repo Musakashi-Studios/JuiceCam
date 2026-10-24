@@ -16,15 +16,9 @@ JuiceCam is built in the open, and contributions to the plugin, documentation, a
 - Avoid committing `.godot` cache files, exported builds, credentials, or unrelated game assets.
 - For a new public feature, describe the use case and how users will configure or call it.
 
-## Run the checks
+## Check your change
 
-Run the project's automated test runner from the repository root:
-
-```sh
-godot --headless --path . --script res://test/test_runner.gd
-```
-
-Also open the project in the editor and run the demo for changes that affect scenes, the Inspector, or camera behavior. Include the checks you ran in your pull request description.
+Open the project in Godot and run the demo for changes that affect scenes, the Inspector, or camera behavior. Include the checks you ran in your pull request description.
 
 ## Open a pull request
 
