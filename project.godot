@@ -1,0 +1,33 @@
+; JuiceCam demo project
+; Open this folder in Godot, then run the guided demo.
+
+config_version=5
+
+[application]
+
+config/name="JuiceCam Demo"
+run/main_scene="res://JuiceCamDemo/scenes/demo.tscn"
+config/features=PackedStringArray("4.7")
+config/icon="res://icon.svg"
+
+[debug]
+
+gdscript/warnings/unassigned_variable=2
+gdscript/warnings/unassigned_variable_op_assign=2
+gdscript/warnings/unused_variable=2
+gdscript/warnings/unused_local_constant=2
+gdscript/warnings/unused_private_class_variable=2
+gdscript/warnings/untyped_declaration=2
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/juicecam/plugin.cfg")
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"

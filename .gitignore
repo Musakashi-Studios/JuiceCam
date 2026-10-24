@@ -1,0 +1,4 @@
+.godot/
+*.tmp
+*.bak
+export.cfg

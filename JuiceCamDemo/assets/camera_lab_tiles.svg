@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="64" viewBox="0 0 256 64">
+  <defs>
+    <pattern id="stone" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M0 15.5H16M15.5 0V16" stroke="#38536a" stroke-width="1" opacity=".48"/>
+      <path d="M2 4h4M10 11h3" stroke="#577087" stroke-width="1" opacity=".36"/>
+    </pattern>
+    <pattern id="brick" width="32" height="16" patternUnits="userSpaceOnUse">
+      <path d="M0 0H32M0 15.5H32M16 0V8M0 8H32M8 8v8" fill="none" stroke="#53627b" stroke-width="1" opacity=".52"/>
+    </pattern>
+  </defs>
+
+  <!-- Grass cap: top-facing terrain tile. -->
+  <g transform="translate(0 0)">
+    <rect width="64" height="64" fill="#263b50"/>
+    <rect width="64" height="64" fill="url(#stone)"/>
+    <path d="M0 0h64v13H0z" fill="#39a890"/>
+    <path d="M0 0h64v3H0z" fill="#91e3c4"/>
+    <path d="M5 7h12M25 7h5M43 7h15" stroke="#d5f5df" stroke-width="2" opacity=".72"/>
+    <path d="M0 13h64" stroke="#204f51" stroke-width="2"/>
+  </g>
+
+  <!-- Deep terrain. -->
+  <g transform="translate(64 0)">
+    <rect width="64" height="64" fill="#263b50"/>
+    <rect width="64" height="64" fill="url(#stone)"/>
+    <path d="M0 4h8M44 5h14M16 26h9M39 42h7" stroke="#74869a" stroke-width="2" opacity=".55"/>
+    <path d="M5 51h15M31 17h9M49 30h10" stroke="#162b3d" stroke-width="2" opacity=".78"/>
+    <path d="M0 63.5H64" stroke="#152a3c" stroke-width="1"/>
+  </g>
+
+  <!-- Built platform tile. -->
+  <g transform="translate(128 0)">
+    <rect width="64" height="64" fill="#30465e"/>
+    <rect width="64" height="64" fill="url(#brick)"/>
+    <path d="M0 0h64v7H0z" fill="#53627b"/>
+    <path d="M0 0h64v2H0z" fill="#93a4b7" opacity=".78"/>
+    <path d="M5 12h12M37 12h20" stroke="#798aa0" stroke-width="1" opacity=".65"/>
+  </g>
+
+  <!-- Signal tile used for station platforms and route markers. -->
+  <g transform="translate(192 0)">
+    <rect width="64" height="64" fill="#293d57"/>
+    <rect width="64" height="64" fill="url(#brick)"/>
+    <path d="M0 0h64v8H0z" fill="#d59a55"/>
+    <path d="M0 0h64v2H0z" fill="#ffe1a0" opacity=".9"/>
+    <path d="M7 18h8M49 18h8M25 45h14" stroke="#e5bd7e" stroke-width="2" opacity=".75"/>
+  </g>
+</svg>
