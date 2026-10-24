@@ -20,7 +20,7 @@ JuiceCam is a flexible 2D camera system that responds to the action. Follow one 
 
 ## Quick start
 
-1. Copy `addons/juicecam` into your Godot project's `addons` folder.
+1. Install JuiceCam by copying `addons/juicecam` into your project's `addons` folder, or open Godot's **AssetLib** tab, search for **JuiceCam**, and download it.
 2. In Godot, open **Project → Project Settings → Plugins** and enable **JuiceCam**.
 3. Add a **JuiceCam2D** node to your scene.
 4. In the camera's **Targets** section, add the `Node2D` the camera should follow.
