@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://res.cloudinary.com/dg2cuyf0t/image/upload/v1792833377/juicecam/branding/juicecam-itch-cover.png" alt="JuiceCam cover art" />
+  <img src="https://res.cloudinary.com/dg2cuyf0t/image/upload/v1792841637/juicecam/branding/juicecam-splash-1080p.png" alt="JuiceCam cover art" />
 </p>
 
 # JuiceCam for Godot
