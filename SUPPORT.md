@@ -1,9 +1,8 @@
 # Support
 
-<!-- SUPPORT LINK PLACEHOLDER: Add the GitHub Issues URL after creating the public repository. -->
-<!-- COMMUNITY PLACEHOLDER: Add a Discord, forum, or studio contact link if one is set up. -->
+For support, visit the [JuiceCam demo page on itch.io](https://musakashi.itch.io/juicecam) and click **Support this tool**.
 
-When the repository is public, use GitHub Issues for reproducible bugs and setup problems. For general questions, add the project’s preferred community link above.
+For reproducible bugs or setup problems, [open a GitHub issue](https://github.com/Musakashi-Studios/JuiceCam/issues).
 
 When reporting a bug, include:
 
