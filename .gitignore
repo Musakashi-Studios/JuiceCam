@@ -3,3 +3,6 @@
 *.bak
 export.cfg
 /.env
+/tools/
+/test/
+/export_presets.cfg
