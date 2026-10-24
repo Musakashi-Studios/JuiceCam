@@ -20,7 +20,6 @@ extends CharacterBody2D
 @export_range(0.1, 10.0, 0.1) var max_pause_duration: float = 1.2
 
 @onready var _sprite: Sprite2D = $NpcSprite
-@onready var _jump_sfx: AudioStreamPlayer2D = $JumpSfx
 
 var _random: RandomNumberGenerator = RandomNumberGenerator.new()
 var _rectangle: RectangleShape2D
@@ -64,7 +63,6 @@ func _physics_process(delta: float) -> void:
 
 	if _jump_pending and grounded:
 		velocity.y = -jump_speed
-		_jump_sfx.play()
 		_jump_pending = false
 		_area_floor_contact = false
 

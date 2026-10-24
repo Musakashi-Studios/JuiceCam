@@ -20,11 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://baigh7hrray3x" path="res://JuiceCamDemo/assets/debug_toggle_checked.svg" id="14_debug_on"]
 [ext_resource type="Script" uid="uid://bgewjlhwdgwkb" path="res://JuiceCamDemo/scripts/npc_controller_2d.gd" id="15_npc"]
 [ext_resource type="Script" uid="uid://ehs1bwyajitq" path="res://addons/juicecam/2d/juice_cam_cinematic_2d.gd" id="16_cinematic"]
-[ext_resource type="AudioStream" uid="uid://dib7gc1t2mm57" path="res://JuiceCamDemo/assets/ES_Sweat Peas - Arthur Benson.mp3" id="17_music"]
-[ext_resource type="AudioStream" uid="uid://b72h4c4myxshu" path="res://JuiceCamDemo/assets/ES_Ambience, Birdsong, Chaffinch, Blackbird, Black Woodpecker, Coniferous Forest, Summer, Afternoon - Epidemic Sound.mp3" id="18_ambience"]
-[ext_resource type="AudioStream" uid="uid://l1kx2wgnpb28" path="res://JuiceCamDemo/assets/ES_User Interface, Click, Button Press Click, Tap, Video Game, Main Menu, Select, Positive 03 - Epidemic Sound.mp3" id="19_ui_click"]
-[ext_resource type="Script" uid="uid://ct3j2u34e022q" path="res://JuiceCamDemo/scripts/demo_ui_click_audio.gd" id="20_ui_audio"]
-[ext_resource type="AudioStream" uid="uid://c1pqa0pceh1gj" path="res://JuiceCamDemo/assets/jump_comic_impact_44k_mono.wav" id="21_jump_sfx"]
 
 [sub_resource type="Environment" id="Environment_demo2"]
 background_color = Color(0.8, 0.9098039, 0.9372549, 1)
@@ -152,24 +147,6 @@ corner_radius_bottom_left = 8
 
 [node name="Demo" type="Node2D" unique_id=382765481]
 script = ExtResource("12_tutorial")
-
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1214664734]
-stream = ExtResource("17_music")
-volume_db = -11.0
-autoplay = true
-
-[node name="ForestAmbience" type="AudioStreamPlayer" parent="." unique_id=2038183904]
-stream = ExtResource("18_ambience")
-volume_db = -3.0
-autoplay = true
-
-[node name="UIClickAudio" type="Node" parent="." unique_id=692137469]
-script = ExtResource("20_ui_audio")
-
-[node name="ClickPlayer" type="AudioStreamPlayer" parent="UIClickAudio" unique_id=1695585285]
-stream = ExtResource("19_ui_click")
-volume_db = -2.0
-max_polyphony = 4
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1041081772]
 environment = SubResource("Environment_demo2")
@@ -433,11 +410,6 @@ texture = ExtResource("10_qhqmk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=428053539]
 shape = SubResource("PlayerCapsule")
 
-[node name="JumpSfx" type="AudioStreamPlayer" parent="Player" unique_id=1245702669]
-stream = ExtResource("21_jump_sfx")
-volume_db = -12.0
-pitch_scale = 1.08
-
 [node name="JuiceCam2D" type="Node2D" parent="Player" unique_id=564647090 node_paths=PackedStringArray("target_0_node")]
 top_level = true
 position = Vector2(960, 560)
@@ -467,12 +439,6 @@ texture = ExtResource("10_qhqmk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Npc" unique_id=475247725]
 shape = SubResource("PlayerCapsule")
-
-[node name="JumpSfx" type="AudioStreamPlayer2D" parent="Npc" unique_id=592685838]
-stream = ExtResource("21_jump_sfx")
-volume_db = -12.0
-pitch_scale = 1.02
-max_distance = 1800.0
 
 [node name="Tutorials" type="Node2D" parent="." unique_id=124874166]
 

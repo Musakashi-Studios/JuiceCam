@@ -17,7 +17,6 @@ extends CharacterBody2D
 @export var jump_buffer_time: float = 0.12
 
 @onready var _player_sprite: Sprite2D = $PlayerSprite
-@onready var _jump_sfx: AudioStreamPlayer = $JumpSfx
 
 var _jump_requested: bool = false
 var _coyote_time_remaining: float = 0.0
@@ -83,7 +82,6 @@ func _physics_process(delta: float) -> void:
 	if jump_is_buffered and can_jump:
 		# Increase launch speed with gravity so the apex height stays constant.
 		velocity.y = jump_velocity * sqrt(ascent_gravity_multiplier)
-		_jump_sfx.play()
 		_jump_buffer_remaining = 0.0
 		_coyote_time_remaining = 0.0
 
