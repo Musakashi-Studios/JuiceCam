@@ -8,12 +8,11 @@
 
 JuiceCam is a flexible 2D camera system that responds to the action. Follow one target or frame a group, keep the view inside rooms and level limits, guide it along paths, or pull it with magnets and zoom zones. Named cinematic sequences can take over for scripted moments, while add-ons bring effects like screen shake, mouse follow, grid snap, and speed-based zoom. Tune each camera to your game, and build custom add-ons when you need more.
 
-<!-- SCREENSHOT PLACEHOLDER: Add a wide in-game camera shot or short gameplay GIF here. Suggested path: docs/images/juicecam-gameplay.gif -->
 
 <p align="center">
   <a href="#quick-start"><strong>Quick start</strong></a>
   &nbsp;·&nbsp;
-  <a href="docs/README.md#pdf-download"><strong>PDF guide</strong></a>
+  <a href="addons/juicecam/documentation.md"><strong>Full guide</strong></a>
   &nbsp;·&nbsp;
   <a href="https://musakashi.itch.io/juicecam"><strong>Play online</strong></a>
   &nbsp;·&nbsp;
@@ -47,16 +46,14 @@ func _ready() -> void:
 - Adds optional effects such as screen shake, mouse follow, grid snap, and velocity zoom.
 - Gives every camera its own targets and add-on state, including in split-screen viewports.
 
-<!-- SCREENSHOT PLACEHOLDER: Add an Inspector screenshot showing target setup. Suggested path: docs/images/juicecam-targets-inspector.png -->
 
 ## Play the demo
 
 You can [launch the demo in your browser](https://musakashi.itch.io/juicecam), or open this repository in Godot and run the main scene. Move with **WASD** and jump with **Space**. The guided demo walks through JuiceCam targets, rooms, magnets, zoom areas, paths, add-ons, and cinematics.
 
-## PDF download
+## Full documentation
 
-The PDF guide is planned for the first public release. Its download link will be added here when the PDF is attached to a release. Until then, use the setup steps above and read [how to create your own add-ons](docs/creating-addons.md).
-
+The complete Markdown guide is included in `addons/juicecam/documentation.md`, so it stays with the add-on when you download or copy it into your project. You can [read it on GitHub](addons/juicecam/documentation.md) or open the file locally. To create custom camera behavior, see [how to create your own add-ons](docs/creating-addons.md).
 ## Support
 
 Read [SUPPORT.md](SUPPORT.md) for the support route and the details to include when reporting a problem.

@@ -1,13 +1,5 @@
 # JuiceCam documentation
 
-<!-- SCREENSHOT PLACEHOLDER: Add a product hero or editor screenshot here. -->
-
-## Full guide
-
-The complete PDF manuscript is available as [Markdown](JuiceCam-Documentation.md). It covers setup, the camera Inspector, targets, influence nodes, cinematic sequences, add-ons, custom add-on scripts, viewport behavior, and the runtime API. Screenshot slots are marked in the manuscript.
-
-## PDF download
-
-The downloadable PDF will be attached to a JuiceCam GitHub release. Add the release download link here when the PDF is ready.
+The full guide is included in the add-on folder as [`documentation.md`](../addons/juicecam/documentation.md). It stays beside the plugin scripts when you download or copy the add-on, so you can keep it for offline reference.
 
 For a short setup, start with the [README quick start](../README.md#quick-start). To create custom camera behavior, see [how to create your own add-ons](creating-addons.md).
