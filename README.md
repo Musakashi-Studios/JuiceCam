@@ -55,7 +55,7 @@ You can [launch the demo in your browser](https://musakashi.itch.io/juicecam), o
 
 ## PDF download
 
-The PDF guide is planned for the first public release. Its download link will be added here when the PDF is attached to a release. Until then, use the setup steps above and the [add-on guide](addons/juicecam/2d/addons/README.md).
+The PDF guide is planned for the first public release. Its download link will be added here when the PDF is attached to a release. Until then, use the setup steps above and read [how to create your own add-ons](docs/creating-addons.md).
 
 ## Support
 

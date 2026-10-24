@@ -10,4 +10,4 @@ The complete PDF manuscript is available as [Markdown](JuiceCam-Documentation.md
 
 The downloadable PDF will be attached to a JuiceCam GitHub release. Add the release download link here when the PDF is ready.
 
-For a short setup, start with the [README quick start](../README.md#quick-start). For add-on details, see the [2D add-on guide](../addons/juicecam/2d/addons/README.md).
+For a short setup, start with the [README quick start](../README.md#quick-start). To create custom camera behavior, see [how to create your own add-ons](creating-addons.md).
