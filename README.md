@@ -16,7 +16,11 @@ JuiceCam is a flexible 2D camera system that responds to the action. Follow one 
   &nbsp;·&nbsp;
   <a href="https://musakashi.itch.io/juicecam"><strong>Play online</strong></a>
   &nbsp;·&nbsp;
-  <a href="SUPPORT.md"><strong>Help &amp; bug reports</strong></a>
+  <a href="ISSUES.md"><strong>Issues</strong></a>
+  &nbsp;·&nbsp;
+  <a href="CONTRIBUTING.md"><strong>Contribute</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://musakashi.itch.io/juicecam"><strong>Donate</strong></a>
 </p>
 
 ## Quick start
@@ -54,11 +58,18 @@ You can [launch the demo in your browser](https://musakashi.itch.io/juicecam), o
 ## Full documentation
 
 The complete Markdown guide is included in `addons/juicecam/documentation.md`, so it stays with the add-on when you download or copy it into your project. You can [read it on GitHub](addons/juicecam/documentation.md) or open the file locally. To create custom camera behavior, see [how to create your own add-ons](docs/creating-addons.md).
-## Help and bug reports
 
-For plugin help, bug reports, or feature requests, [open a GitHub issue](https://github.com/Musakashi-Studios/JuiceCam/issues) or email [musakashi.dev@outlook.com](mailto:musakashi.dev@outlook.com). See [SUPPORT.md](SUPPORT.md) for details to include when reporting a problem.
+## Issues
 
-**Donations:** The **Support this tool** button on the [JuiceCam itch.io demo page](https://musakashi.itch.io/juicecam) is for donations only. For plugin help, use GitHub Issues or email instead.
+Report bugs, ask questions, or suggest features through the [GitHub issue tracker](https://github.com/Musakashi-Studios/JuiceCam/issues). Read [ISSUES.md](ISSUES.md) first for what to include. You can also email [musakashi.dev@outlook.com](mailto:musakashi.dev@outlook.com).
+
+## Contributing
+
+Want to improve JuiceCam, its docs, or the demo? See [CONTRIBUTING.md](CONTRIBUTING.md) for the development setup and pull request guide.
+
+## Donate
+
+JuiceCam is an independent project. If it has helped your game, a donation helps me spend more time on fixes, features, and documentation. Visit the [JuiceCam page on itch.io](https://musakashi.itch.io/juicecam) and click **Support this tool**.
 
 ## Project status
 
