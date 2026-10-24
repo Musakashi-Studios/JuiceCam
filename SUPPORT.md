@@ -1,8 +1,12 @@
-# Support
+# Plugin help and donations
 
-For support, visit the [JuiceCam demo page on itch.io](https://musakashi.itch.io/juicecam) and click **Support this tool**.
+## Get help
 
-For reproducible bugs or setup problems, [open a GitHub issue](https://github.com/Musakashi-Studios/JuiceCam/issues).
+For plugin help, bug reports, or feature requests, [open a GitHub issue](https://github.com/Musakashi-Studios/JuiceCam/issues) or email [musakashi.dev@outlook.com](mailto:musakashi.dev@outlook.com).
+
+## Donate
+
+The **Support this tool** button on the [JuiceCam itch.io demo page](https://musakashi.itch.io/juicecam) is for donations only. It does not provide technical support. Use GitHub Issues or email for help with the plugin.
 
 When reporting a bug, include:
 

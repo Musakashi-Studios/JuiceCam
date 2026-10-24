@@ -705,9 +705,10 @@ Influence entry/exit signals fire for each camera when its followed point enters
 
 ---
 
-## Demo and support
+## Demo, help, and donations
 
 - [Play the JuiceCam demo online](https://musakashi.itch.io/juicecam).
 - [Download the complete JuiceCam project from GitHub](https://github.com/Musakashi-Studios/JuiceCam).
 - [Read how to create custom add-ons](https://github.com/Musakashi-Studios/JuiceCam/blob/main/docs/creating-addons.md).
-- [Get support or report a bug](https://github.com/Musakashi-Studios/JuiceCam/blob/main/SUPPORT.md).
+- For plugin help, bug reports, or feature requests, [open a GitHub issue](https://github.com/Musakashi-Studios/JuiceCam/issues) or email [musakashi.dev@outlook.com](mailto:musakashi.dev@outlook.com).
+- **Donations:** The **Support this tool** button on the [JuiceCam itch.io demo page](https://musakashi.itch.io/juicecam) is for donations only. For plugin help, use GitHub Issues or email instead.
