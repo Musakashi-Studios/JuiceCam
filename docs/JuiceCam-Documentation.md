@@ -4,7 +4,7 @@
 
 ## A camera with a feel for the game
 
-**2D camera plugin · Godot 4.7 demo project · Version 1.0**
+**2D camera plugin · Godot 4.7 demo project ([play online](https://musakashi.itch.io/juicecam)) · Version 1.0**
 
 <!-- COVER SCREENSHOT PLACEHOLDER: A polished gameplay frame that shows camera composition in action. Suggested file: docs/images/cover-gameplay.png -->
 
@@ -59,7 +59,7 @@ JuiceCam creates and controls its own `Camera2D` child. Add a `JuiceCam2D` node 
 3. Enable **JuiceCam**.
 4. Open the **Create Node** dialog and search for `JuiceCam2D`.
 
-The included demo is a Godot project. Open the repository's `project.godot` and run the main scene to explore the guided camera tutorial. Move with **WASD** and jump with **Space**.
+You can [play the demo in your browser](https://musakashi.itch.io/juicecam). To explore the included Godot project locally, open the repository's `project.godot` and run the main scene. Move with **WASD** and jump with **Space**.
 
 ### Enable the plugin in an existing project
 
@@ -69,10 +69,8 @@ Enable JuiceCam to add its node types and target controls to the editor. If you 
 
 ### Requirements
 
-- Godot 4.7 for the included demo project.
+- Godot 4.7 to run the included demo project locally. You can also [play it in your browser](https://musakashi.itch.io/juicecam).
 - A 2D scene using `Node2D` targets.
-
-The included demo project uses Godot 4.7.
 
 ## 3. Make your first camera
 
@@ -744,7 +742,7 @@ This Markdown file is the complete guide manuscript and can be rendered as a PDF
 
 ### Included project resources
 
-- [Open the guided demo scene](../JuiceCamDemo/scenes/demo.tscn) in the included Godot project.
+- [Open the guided demo scene](../JuiceCamDemo/scenes/demo.tscn) in the included Godot project, or [play it online](https://musakashi.itch.io/juicecam).
 - [README quick start](../README.md#quick-start)
 - [Support and bug reports](../SUPPORT.md)
 

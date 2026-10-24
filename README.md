@@ -13,7 +13,7 @@ JuiceCam is a flexible 2D camera system that responds to the action. Follow one 
   &nbsp;·&nbsp;
   <a href="docs/README.md#pdf-download"><strong>PDF guide</strong></a>
   &nbsp;·&nbsp;
-  <a href="#play-the-demo"><strong>Play the demo</strong></a>
+  <a href="https://musakashi.itch.io/juicecam"><strong>Play online</strong></a>
   &nbsp;·&nbsp;
   <a href="SUPPORT.md"><strong>Support</strong></a>
 </p>
@@ -49,9 +49,7 @@ func _ready() -> void:
 
 ## Play the demo
 
-Open this repository in Godot and run the main scene. Move with **WASD** and jump with **Space**. The guided demo walks through JuiceCam targets, rooms, magnets, zoom areas, paths, add-ons, and cinematics.
-
-<!-- ONLINE DEMO PLACEHOLDER: Add the hosted browser-play link here when the web build is published. -->
+You can [launch the demo in your browser](https://musakashi.itch.io/juicecam), or open this repository in Godot and run the main scene. Move with **WASD** and jump with **Space**. The guided demo walks through JuiceCam targets, rooms, magnets, zoom areas, paths, add-ons, and cinematics.
 
 ## PDF download
 
@@ -63,4 +61,4 @@ Read [SUPPORT.md](SUPPORT.md) for the support route and the details to include w
 
 ## Project status
 
-JuiceCam's 2D plugin is in active development. The demo project targets Godot 4.7. The repository also leaves room for a future 3D camera that can share the core camera math.
+JuiceCam's 2D plugin is in active development. The demo project targets Godot 4.7; [play it online](https://musakashi.itch.io/juicecam). The repository also leaves room for a future 3D camera that can share the core camera math.
