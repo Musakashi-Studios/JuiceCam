@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dekviyr4bwj1d"
-path="res://.godot/imported/player2.svg-12f174fd7ce7ec3d1e95cee5c2436744.ctex"
+path="res://.godot/imported/player2.svg-dad3e8a1d0d708341d92f45321559c34.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://JuiceCamDemo/assets/player2.svg"
-dest_files=["res://.godot/imported/player2.svg-12f174fd7ce7ec3d1e95cee5c2436744.ctex"]
+dest_files=["res://.godot/imported/player2.svg-dad3e8a1d0d708341d92f45321559c34.ctex"]
 
 [params]
 

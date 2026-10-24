@@ -1,15 +1,12 @@
 class_name JuiceMath
 extends RefCounted
 
-## JuiceMath
-## Pure, highly-optimized mathematical foundations for AAA camera motion.
-## Provides framerate-independent critically damped springs, harmonic oscillators,
-## and exponential decays without per-frame memory allocations.
+## Shared damping, prediction, and interpolation helpers for JuiceCam cameras.
 
 # --- Smooth Damp (Critically Damped Spring) ---
 
 ## Smoothly dampens a scalar value towards a target using a critically damped spring.
-## Returns PackedFloat32Array([new_position, new_velocity])
+## Returns Array[float]([new_position, new_velocity]).
 static func smooth_damp_scalar(
 	current: float,
 	target: float,
@@ -59,7 +56,6 @@ static func smooth_damp_2d(
 
 
 ## Smoothly dampens a Vector3 towards a target using critically damped springs per axis.
-## Fully reusable for JuiceCam3D.
 ## Returns Array[Vector3]([new_position, new_velocity])
 static func smooth_damp_3d(
 	current: Vector3,
@@ -77,9 +73,8 @@ static func smooth_damp_3d(
 
 # --- Spring Damper (Exact Analytic Harmonic Oscillator) ---
 
-## Exact analytic solution to damped harmonic oscillator:
-## Handles underdamped (zeta < 1.0), critically damped (zeta == 1.0), and overdamped (zeta > 1.0)
-## Unconditionally stable at any timestep delta with full zero-division and negative delta guards.
+## Closed-form damped oscillator step for underdamped, critically damped, and overdamped motion.
+## Returns the input state for non-positive delta or near-zero frequency.
 ## Returns Array[float]([new_position, new_velocity])
 static func spring_damper_scalar(
 	current: float,
@@ -105,7 +100,9 @@ static func spring_damper_scalar(
 		var sin_term: float = sin(omega_d * delta)
 		
 		var new_delta: float = decay * (c1 * cos_term + c2 * sin_term)
-		var new_vel: float = decay * ((-damping_ratio * omega * c1 + omega_d * c2) * cos_term + (-damping_ratio * omega * c2 - omega_d * c1) * sin_term)
+		var velocity_cos: float = -damping_ratio * omega * c1 + omega_d * c2
+		var velocity_sin: float = -damping_ratio * omega * c2 - omega_d * c1
+		var new_vel: float = decay * (velocity_cos * cos_term + velocity_sin * sin_term)
 		return [target + new_delta, new_vel]
 		
 	elif damping_ratio > 1.0001: # Overdamped (sluggish)
@@ -150,7 +147,6 @@ static func spring_damper_2d(
 
 
 ## Vector3 spring damper using exact analytic solution.
-## Fully reusable for JuiceCam3D.
 ## Returns Array[Vector3]([new_position, new_velocity])
 static func spring_damper_3d(
 	current: Vector3,
@@ -169,19 +165,16 @@ static func spring_damper_3d(
 # --- Framerate-Independent Exponential Decay ---
 
 ## Exponential decay towards target: exact solution to dx/dt = -decay_rate * (x - target).
-## Guarantees identical outcome regardless of delta-time steps.
+## Uses the exact exponential response for the supplied delta.
 static func decay_scalar(current: float, target: float, decay_rate: float, delta: float) -> float:
 	return target + (current - target) * exp(-decay_rate * delta)
 
 
-## Exponential decay for Vector2.
 static func decay_2d(current: Vector2, target: Vector2, decay_rate: float, delta: float) -> Vector2:
 	var factor: float = exp(-decay_rate * delta)
 	return target + (current - target) * factor
 
 
-## Exponential decay for Vector3.
-## Fully reusable for JuiceCam3D.
 static func decay_3d(current: Vector3, target: Vector3, decay_rate: float, delta: float) -> Vector3:
 	var factor: float = exp(-decay_rate * delta)
 	return target + (current - target) * factor
@@ -223,9 +216,7 @@ static func smooth_damp_angle(
 
 # --- Filtered Predictive Look-Ahead ---
 
-## Calculates a smooth, jitter-free lookahead offset based on target velocity.
-## Employs exponential low-pass damping so sudden direction reversals or stops
-## glide smoothly rather than jerking or snapping.
+## Filters a velocity-based lead so direction changes ease instead of snapping.
 static func filtered_lookahead_2d(
 	current_lookahead: Vector2,
 	target_velocity: Vector2,
@@ -244,8 +235,7 @@ static func filtered_lookahead_2d(
 	return decay_2d(current_lookahead, target_lookahead, damping, delta)
 
 
-## 3D filtered predictive look-ahead based on target velocity.
-## Fully reusable for JuiceCam3D.
+## Vector3 version of the filtered predictive look-ahead calculation.
 static func filtered_lookahead_3d(
 	current_lookahead: Vector3,
 	target_velocity: Vector3,
@@ -284,8 +274,7 @@ static func adaptive_smooth_damp_2d(
 	return smooth_damp_2d(current, target, current_velocity, effective_smooth_time, max_speed, delta)
 
 
-## 3D adaptive dual-speed smooth damp.
-## Fully reusable for JuiceCam3D.
+## Vector3 version of the adaptive smooth-damp calculation.
 static func adaptive_smooth_damp_3d(
 	current: Vector3,
 	target: Vector3,

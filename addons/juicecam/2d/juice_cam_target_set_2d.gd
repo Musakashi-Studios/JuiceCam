@@ -317,7 +317,11 @@ func get_dynamic_property(property: StringName) -> Variant:
 func set_dynamic_property(property: StringName, value: Variant) -> PropertyWriteResult:
 	if property == &"target_count":
 		var requested_count: int = 0 if value == null else maxi(0, int(value))
-		return PropertyWriteResult.SCHEMA_CHANGED if _resize_serialized_entries(requested_count) else PropertyWriteResult.HANDLED
+		return (
+			PropertyWriteResult.SCHEMA_CHANGED
+			if _resize_serialized_entries(requested_count)
+			else PropertyWriteResult.HANDLED
+		)
 
 	var parsed_property: Dictionary = _parse_target_property(property)
 	if parsed_property.is_empty():

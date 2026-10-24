@@ -261,17 +261,15 @@ func _rebuild_automatic_handles(first_index: int, last_index: int) -> void:
 		var point_position: Vector2 = curve.get_point_position(point_index)
 		var tangent: Vector2 = Vector2.ZERO
 		var handle_length: float = 0.0
-		if point_count == 1:
-			pass
-		elif point_index == 0:
+		if point_count > 1 and point_index == 0:
 			var next_delta: Vector2 = curve.get_point_position(1) - point_position
 			tangent = next_delta.normalized()
 			handle_length = next_delta.length() / 3.0
-		elif point_index == point_count - 1:
+		elif point_count > 1 and point_index == point_count - 1:
 			var previous_delta: Vector2 = point_position - curve.get_point_position(point_index - 1)
 			tangent = previous_delta.normalized()
 			handle_length = previous_delta.length() / 3.0
-		else:
+		elif point_count > 1:
 			var previous_delta: Vector2 = point_position - curve.get_point_position(point_index - 1)
 			var next_delta: Vector2 = curve.get_point_position(point_index + 1) - point_position
 			var previous_length: float = previous_delta.length()

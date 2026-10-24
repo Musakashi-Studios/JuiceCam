@@ -2,8 +2,7 @@
 class_name JuiceCamCinematicPlayer2D
 extends RefCounted
 
-## Per-camera sequence state machine. Cinematic scene nodes are immutable
-## configuration while playing; this class owns ordering, holds, and signals.
+## Per-camera playback state. This class handles point ordering, holds, and signals.
 
 signal cinematic_started(sequence_name: StringName)
 signal cinematic_stopped(sequence_name: StringName)

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgs2ddvrrobk2"
-path="res://.godot/imported/debug_toggle_unchecked.svg-b35cfaf3c6061730021b398facdf9715.ctex"
+path="res://.godot/imported/debug_toggle_unchecked.svg-12be62f9446a829f5584b80900ce6f20.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://JuiceCamDemo/assets/debug_toggle_unchecked.svg"
-dest_files=["res://.godot/imported/debug_toggle_unchecked.svg-b35cfaf3c6061730021b398facdf9715.ctex"]
+dest_files=["res://.godot/imported/debug_toggle_unchecked.svg-12be62f9446a829f5584b80900ce6f20.ctex"]
 
 [params]
 

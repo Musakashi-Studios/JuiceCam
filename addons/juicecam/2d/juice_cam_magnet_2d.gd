@@ -52,7 +52,7 @@ signal magnet_exited(camera: Node2D)
 		use_full_force = value
 		notify_property_list_changed()
 
-## Maximum local-pixel offset on each axis. The current target distance scales it through the falloff curve; values are not accumulated.
+## Maximum local-space offset per axis. Falloff scales it each update; movement is not accumulated.
 @export var force: Vector2 = Vector2(100.0, 100.0)
 
 ## Falloff from the center (1) to the edge (0) of the region.

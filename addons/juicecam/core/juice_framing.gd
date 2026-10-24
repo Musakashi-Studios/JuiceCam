@@ -1,9 +1,7 @@
 class_name JuiceFraming
 extends RefCounted
 
-## JuiceFraming
-## Math engine for rotation-invariant multi-target auto-framing and dynamic zoom calculation.
-## Transforms target bounding envelopes into camera local space to compute precise screen-fitting zoom.
+## Camera-space calculations for framing groups of targets.
 
 const MIN_ZOOM: float = 0.001
 
@@ -56,8 +54,7 @@ static func calculate_framing_extents_2d(
 	return Vector2(max_hx, max_hy)
 
 
-## Computes the optimal camera zoom to frame all targets comfortably within the viewport.
-## Invariant to camera rotation: accounts for screen aspect ratio and margin padding.
+## Calculates a zoom that fits the target extents within the usable viewport area.
 static func calculate_autofit_zoom_2d(
 	target_positions: Array[Vector2],
 	target_radii: Array[float],
@@ -97,8 +94,7 @@ static func calculate_autofit_zoom_2d(
 	return Vector2(clamped_scalar, clamped_scalar)
 
 
-## 3D camera-local framing extents calculation for JuiceCam3D.
-## Projects targets into camera local space using the camera's Basis.
+## Calculates target framing extents in camera-local 3D space using the camera Basis.
 ## Returns Vector3(half_width, half_height, half_depth).
 static func calculate_framing_extents_3d(
 	target_positions: Array[Vector3],

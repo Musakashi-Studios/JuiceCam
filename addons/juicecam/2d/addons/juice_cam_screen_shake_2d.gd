@@ -49,7 +49,7 @@ var _active_trauma: float = 0.0
 		_notify_configuration_changed()
 
 @export_group("Shake")
-## Oscillation speed. The old CamRig presets use the same scale.
+## Controls how quickly the shake pattern changes.
 @export_range(0.0, 100.0, 0.1, "or_greater") var speed: float = 15.0:
 	set(value):
 		var new_value: float = maxf(0.0, value)

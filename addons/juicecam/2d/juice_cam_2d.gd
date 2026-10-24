@@ -3,9 +3,7 @@
 class_name JuiceCam2D
 extends Node2D
 
-## JuiceCam2D
-## A target-following Camera2D controller for Godot 4.
-## Follows weighted 2D targets with smoothing, rotation, and automatic framing.
+## Target-following Camera2D controller with weighted targets, smoothing, and group framing.
 
 const JuiceCamTargetSet2DScript: GDScript = preload("res://addons/juicecam/2d/juice_cam_target_set_2d.gd")
 const JuiceCamAddonFrame2DScript: GDScript = preload("res://addons/juicecam/2d/addons/juice_cam_addon_frame_2d.gd")
@@ -24,7 +22,7 @@ const DEBUG_CAMERA_MARKER_RADIUS: float = 12.0
 const DEBUG_DESTINATION_MARKER_RADIUS: float = 8.0
 const DEBUG_LOOKAHEAD_SQUARE_SCALE: float = 0.5
 const DEBUG_STROKE_WIDTH: float = -1.0
-## Matches the legacy camera's nearby influence scan radius.
+## Search radius for nearby room, magnet, and zoom influences, in world units.
 const INFLUENCE_SEARCH_RADIUS: float = 2000.0
 const DEBUG_DRAW_COLOR: Color = JuiceCamDebugPalette2D.CAMERA
 
@@ -49,7 +47,6 @@ enum ProcessCallback {
 	PHYSICS,     ## Updates in _physics_process (best for physics bodies to avoid jitter)
 }
 
-# --- Motion Settings ---
 @export_group("Motion")
 
 ## Whether camera motion is smoothed using math damping or snaps instantly to target.
@@ -78,7 +75,6 @@ enum ProcessCallback {
 ## Maximum camera movement speed limit in pixels per second (INF = unlimited).
 @export var max_speed: float = INF
 
-# --- Rotation Settings ---
 @export_group("Rotation")
 
 ## Whether the camera rotates to match the target's rotation.
@@ -93,7 +89,6 @@ enum ProcessCallback {
 ## Additional rotation offset added to the camera angle in degrees.
 @export_range(-180.0, 180.0, 0.1, "suffix:deg") var rotation_offset_degrees: float = 0.0
 
-# --- Zoom Settings ---
 @export_group("Zoom")
 
 ## Minimum allowable zoom scale per axis to prevent projection matrix singularity and divide-by-zero errors.
@@ -114,7 +109,6 @@ const MIN_ZOOM: float = 0.001
 ## Duration in seconds for smooth zoom arrival.
 @export_range(0.001, 2.0, 0.01, "suffix:s") var smooth_zoom_time: float = 0.2
 
-# --- Cinematic Presentation ---
 @export_group("Cinematic Presentation")
 
 ## Slides screen-space letterbox bars in for active cinematics and out when playback ends.
@@ -135,7 +129,6 @@ const MIN_ZOOM: float = 0.001
 		cinematic_bar_transition_time = maxf(value, 0.0)
 		_update_cinematic_bars()
 
-# --- Auto Framing Settings ---
 @export_group("Auto Framing")
 
 ## Whether camera automatically adjusts zoom to keep all targets framed inside the viewport.
@@ -150,11 +143,9 @@ const MIN_ZOOM: float = 0.001
 ## Maximum camera zoom allowed during auto-framing (closest zoomed in).
 @export_range(0.5, 10.0, 0.1) var max_framing_zoom: float = 1.0
 
-## Multiplier for extra screen space allocated to high-weight targets beyond their physical radius.
-## High-weight targets receive expanded framing clearance, while all targets remain guaranteed to fit.
+## Adds framing clearance to targets whose weight is above 1.0.
 @export_range(0.0, 5.0, 0.1) var weight_space_factor: float = 1.0
 
-# --- Camera Limit Settings ---
 @export_group("Limits")
 
 ## Keeps the camera's entire visible area inside the configured world bounds.
@@ -176,7 +167,6 @@ const MIN_ZOOM: float = 0.001
 ## Bottom edge of the permitted world area.
 @export var limit_bottom: float = 10000000.0
 
-# --- Dead Zone Settings ---
 @export_group("Dead Zone")
 
 ## Keeps one influential target inside horizontal camera-local deadzone margins.
@@ -205,7 +195,6 @@ const MIN_ZOOM: float = 0.001
 	set(value):
 		deadzone_bottom_margin = clampf(value, 0.0, 1.0)
 
-# --- Add-ons ---
 @export_group("Add-ons")
 
 ## Optional per-camera add-on resources. Each camera gets its own runtime copy.
@@ -218,7 +207,6 @@ const MIN_ZOOM: float = 0.001
 		if is_inside_tree():
 			_rebuild_runtime_addons()
 
-# --- Debug Settings ---
 @export_group("Debug")
 
 ## Enables live motion tracking preview while in the Godot Editor.
@@ -473,8 +461,7 @@ func update_camera_motion(delta: float) -> void:
 		target_pos = _modify_target_position(target_pos)
 		target_pos = _apply_path_constraint(target_pos)
 
-		# Match the legacy pipeline: room membership is based on the destination
-		# after magnets, deadzones, and path projection, before smoothing.
+		# Room membership uses the constrained destination before camera smoothing.
 		var previous_room: JuiceCamRoom2D = _active_room
 		_active_room = _select_active_room(target_pos)
 		var snap_on_room_enter: bool = (
@@ -1105,41 +1092,41 @@ func _sort_influence_priority(a: Node2D, b: Node2D) -> bool:
 	return priority_a > priority_b
 
 
-## Calculates optimal auto-framing zoom across all targets in camera local space.
+## Calculates the auto-framing zoom for all valid targets.
 func _calculate_auto_framing_zoom() -> Vector2:
 	var targets: Array[JuiceCamTargetData] = get_all_targets()
 	if targets.is_empty():
 		return zoom
 	if targets.size() == 1:
 		return zoom
-		
-	var vp_size: Vector2 = _get_effective_viewport_size()
-	if vp_size.x <= 0.0 or vp_size.y <= 0.0:
+
+	var viewport_size: Vector2 = _get_effective_viewport_size()
+	if viewport_size.x <= 0.0 or viewport_size.y <= 0.0:
 		return zoom
-		
+
 	var positions: Array[Vector2] = []
 	var radii: Array[float] = []
 	var weights: Array[float] = []
-	
-	for t: JuiceCamTargetData in targets:
-		if t != null and t.is_valid():
-			positions.append(t.get_tracking_world_position())
-			radii.append(t.radius)
-			weights.append(t.weight)
-			
+
+	for target_data: JuiceCamTargetData in targets:
+		if target_data != null and target_data.is_valid():
+			positions.append(target_data.get_tracking_world_position())
+			radii.append(target_data.radius)
+			weights.append(target_data.weight)
+
 	if positions.is_empty():
 		return zoom
-		
+
 	var centroid: Vector2 = _calculate_tracking_centroid(targets)
-	var cam_rot: float = global_rotation
-	
+	var camera_rotation: float = global_rotation
+
 	return JuiceFraming.calculate_autofit_zoom_2d(
 		positions,
 		radii,
 		weights,
 		centroid,
-		cam_rot,
-		vp_size,
+		camera_rotation,
+		viewport_size,
 		framing_margin,
 		min_framing_zoom,
 		max_framing_zoom,
@@ -1571,7 +1558,10 @@ func _rebuild_runtime_addons() -> void:
 		_runtime_addons.append(runtime_addon)
 		if not runtime_addon.addon_id.is_empty():
 			if _addons_by_id.has(runtime_addon.addon_id):
-				push_warning("JuiceCam2D '%s' has duplicate add-on ID '%s'; get_addon() returns the first one." % [name, runtime_addon.addon_id])
+				push_warning(
+					"JuiceCam2D '%s' has duplicate add-on ID '%s'; get_addon() returns the first one."
+					% [name, runtime_addon.addon_id]
+				)
 			else:
 				_addons_by_id[runtime_addon.addon_id] = runtime_addon
 		if runtime_addon is JuiceCamTargetModifier2D:

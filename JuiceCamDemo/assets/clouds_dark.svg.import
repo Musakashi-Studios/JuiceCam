@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d2b6nx27dyqpb"
-path="res://.godot/imported/clouds_dark.svg-1fed440f3d65d16bce9cd073e4f89b00.ctex"
+path="res://.godot/imported/clouds_dark.svg-7fc21554bf9dface67b46c5ab34e23e2.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://JuiceCamDemo/assets/clouds_dark.svg"
-dest_files=["res://.godot/imported/clouds_dark.svg-1fed440f3d65d16bce9cd073e4f89b00.ctex"]
+dest_files=["res://.godot/imported/clouds_dark.svg-7fc21554bf9dface67b46c5ab34e23e2.ctex"]
 
 [params]
 

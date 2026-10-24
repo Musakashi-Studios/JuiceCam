@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://q3rsfp5rn670"
-path="res://.godot/imported/ground2.svg-2fc506e9a7359281fafd8cbc245e6a10.ctex"
+path="res://.godot/imported/ground2.svg-0a8950f562164aeab3b23f6579f27c4e.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://JuiceCamDemo/assets/ground2.svg"
-dest_files=["res://.godot/imported/ground2.svg-2fc506e9a7359281fafd8cbc245e6a10.ctex"]
+dest_files=["res://.godot/imported/ground2.svg-0a8950f562164aeab3b23f6579f27c4e.ctex"]
 
 [params]
 

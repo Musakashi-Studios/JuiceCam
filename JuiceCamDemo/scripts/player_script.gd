@@ -43,7 +43,7 @@ func _input(event: InputEvent) -> void:
 	if key_event.physical_keycode in [KEY_W, KEY_SPACE]:
 		_jump_requested = true
 	elif key_event.physical_keycode == KEY_F:
-		var camera: JuiceCam2D = get_tree().current_scene.get_node_or_null("JuiceCam2D") as JuiceCam2D
+		var camera: JuiceCam2D = get_node_or_null("JuiceCam2D") as JuiceCam2D
 		if is_instance_valid(camera):
 			var shake: JuiceCamScreenShake2D = camera.get_addon("screen_shake") as JuiceCamScreenShake2D
 			if is_instance_valid(shake):
