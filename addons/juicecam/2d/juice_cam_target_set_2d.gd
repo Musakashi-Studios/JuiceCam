@@ -212,7 +212,7 @@ func calculate_weighted_centroid(fallback_position: Vector2) -> Vector2:
 
 
 ## Updates target velocity samples and returns their weighted mean world-space speed.
-func update_tracking_data(delta: float) -> float:
+func update_tracking_data(delta: float, lookahead_damping_rate: float) -> float:
 	_finalize_serialized_entries()
 	var weighted_speed: float = 0.0
 	var total_weight: float = 0.0
@@ -220,7 +220,7 @@ func update_tracking_data(delta: float) -> float:
 	for target_data: JuiceCamTargetData in _entries:
 		if target_data == null:
 			continue
-		target_data.update_tracking_position(delta)
+		target_data.update_tracking_position(delta, lookahead_damping_rate)
 		if not target_data.is_valid():
 			continue
 		var weight: float = maxf(0.0, target_data.weight)

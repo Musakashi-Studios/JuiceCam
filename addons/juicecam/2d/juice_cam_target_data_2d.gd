@@ -6,7 +6,6 @@ extends RefCounted
 
 const JuiceMath: GDScript = preload("res://addons/juicecam/core/juice_math.gd")
 const MAX_LOOKAHEAD_DISTANCE: float = 1000.0
-const LOOKAHEAD_DAMPING: float = 8.0
 
 var _node: Node2D = null
 var node: Node2D:
@@ -75,7 +74,7 @@ func get_world_position() -> Vector2:
 
 
 ## Updates this target's filtered predictive focus. Call once per camera frame.
-func update_tracking_position(delta: float) -> void:
+func update_tracking_position(delta: float, lookahead_damping_rate: float) -> void:
 	if not is_valid():
 		_reset_lookahead_state()
 		return
@@ -104,7 +103,7 @@ func update_tracking_position(delta: float) -> void:
 			_filtered_lookahead,
 			focus_velocity,
 			MAX_LOOKAHEAD_DISTANCE,
-			LOOKAHEAD_DAMPING,
+			lookahead_damping_rate,
 			delta
 		)
 	_tracking_world_position = focus_position + _filtered_lookahead * lookahead_factor

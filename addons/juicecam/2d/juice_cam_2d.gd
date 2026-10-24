@@ -415,7 +415,10 @@ func update_camera_motion(delta: float) -> void:
 	_addon_frame.viewport_size = _get_effective_viewport_size() if not _runtime_addons.is_empty() else Vector2.ZERO
 	_addon_frame.has_target = _target_set.has_influential_targets() or cinematic_point != null
 	_addon_frame.is_cinematic = cinematic_point != null
-	_addon_frame.target_speed = _target_set.update_tracking_data(delta)
+	_addon_frame.target_speed = _target_set.update_tracking_data(
+		delta,
+		_get_lookahead_damping_rate()
+	)
 	_addon_frame.current_position = global_position
 	_addon_frame.current_rotation = global_rotation
 	_addon_frame.current_zoom = _current_zoom
@@ -654,6 +657,29 @@ func _apply_position_motion(
 				delta
 			)
 			_current_velocity = Vector2.ZERO
+
+
+func _get_lookahead_damping_rate() -> float:
+	if not smooth_motion:
+		return INF
+
+	match damping_type:
+		DampingType.SMOOTH_DAMP:
+			return 1.0 / maxf(smooth_time, 0.001)
+		DampingType.SPRING_DAMP:
+			var natural_frequency: float = TAU * maxf(spring_frequency, 0.1)
+			var damping_ratio: float = maxf(spring_damping, 0.1)
+			if is_equal_approx(damping_ratio, 1.0):
+				return natural_frequency * 0.63
+			if damping_ratio < 1.0:
+				return natural_frequency * damping_ratio
+			return natural_frequency * (
+				damping_ratio - sqrt(damping_ratio * damping_ratio - 1.0)
+			)
+		DampingType.EXPONENTIAL_DECAY:
+			return decay_rate
+
+	return 8.0
 
 
 func _update_cinematic_influence_overlaps(focus_position: Vector2) -> void:
