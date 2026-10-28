@@ -20,4 +20,4 @@ Remove private project files, credentials, and unrelated assets before attaching
 
 Describe what you are trying to do and where you got stuck. For a feature request, explain the problem in your game and the behavior you would like JuiceCam to provide.
 
-You can also email [musakashi.dev@outlook.com](mailto:musakashi.dev@outlook.com).
+You can also email [musakashi.dev@icloud.com](mailto:musakashi.dev@icloud.com).

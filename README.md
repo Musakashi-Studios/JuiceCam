@@ -61,7 +61,7 @@ The complete Markdown guide is included in `addons/juicecam/documentation.md`, s
 
 ## Issues
 
-Report bugs, ask questions, or suggest features through the [GitHub issue tracker](https://github.com/Musakashi-Studios/JuiceCam/issues). Read [ISSUES.md](ISSUES.md) first for what to include. You can also email [musakashi.dev@outlook.com](mailto:musakashi.dev@outlook.com).
+Report bugs, ask questions, or suggest features through the [GitHub issue tracker](https://github.com/Musakashi-Studios/JuiceCam/issues). Read [ISSUES.md](ISSUES.md) first for what to include. You can also email [musakashi.dev@icloud.com](mailto:musakashi.dev@icloud.com).
 
 ## Contributing
 
